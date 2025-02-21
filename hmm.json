@@ -1,0 +1,87 @@
+{
+  "dependencies": [
+    {
+      "name": "lime",
+      "type": "haxelib",
+      "version": "8.1.3"
+    },
+    {
+      "name": "openfl",
+      "type": "haxelib",
+      "version": "9.3.4"
+    },
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": "5.8.0"
+    },
+    {
+      "name": "flixel-addons",
+      "type": "haxelib",
+      "version": "3.2.3"
+    },
+    {
+      "name": "flixel-tools",
+      "type": "haxelib",
+      "version": "1.5.1"
+    },
+    {
+      "name": "flixel-ui",
+      "type": "haxelib",
+      "version": "2.6.1"
+    },
+    {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hxCodec",
+      "type": "haxelib",
+      "version": "3.0.2"
+    },
+    {
+      "name": "SScript",
+      "type": "git",
+      "dir": null,
+      "ref": "main",
+      "url": "https://github.com/mcagabe19-stuff/SScript-7.7.0.git"
+    },
+    {
+      "name": "hxcpp-debug-server",
+      "type": "haxelib",
+      "version": "1.2.4"
+    },
+    {
+      "name": "tjson",
+      "type": "haxelib",
+      "version": "1.4.0"
+    },
+    {
+      "name": "json2object",
+      "type": "haxelib",
+      "version": "3.11.0"
+    },
+    {
+      "name": "hxdiscord_rpc",
+      "type": "git",
+      "dir": null,
+      "ref": "main",
+      "url": "https://github.com/MAJigsaw77/hxdiscord_rpc"
+    },
+    {
+      "name": "flxanimate",
+      "type": "git",
+      "dir": null,
+      "ref": "dev",
+      "url": "https://github.com/FunkinExtraKeys/flxanimate"
+    },
+    {
+      "name": "linc_luajit",
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/superpowers04/linc_luajit"
+    }
+  ]
+}
