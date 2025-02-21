@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="manual_book.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="manual icon0000" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0001" x="218" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0002" x="433" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0003" x="648" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0004" x="648" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0005" x="433" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0006" x="218" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0007" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0008" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0009" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0010" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0011" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0012" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0013" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0014" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0015" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0016" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0017" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0018" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0019" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0020" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0021" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0022" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0023" x="218" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0024" x="433" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0025" x="648" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0026" x="648" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0027" x="433" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0028" x="218" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0029" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0030" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0031" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0032" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0033" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0034" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0035" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0036" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0037" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0038" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0039" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0040" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0041" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0042" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0043" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0044" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0045" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0046" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0047" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0048" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0049" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0050" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0051" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0052" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0053" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0054" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0055" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0056" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0057" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0058" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0059" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0060" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0061" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0062" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0063" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0064" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0065" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0066" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0067" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0068" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0069" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0070" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0071" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0072" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0073" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0074" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0075" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0076" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0077" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0078" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon0079" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon hover0000" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon hover0001" x="3" y="3" width="210" height="212"/>
+	<SubTexture name="manual icon hover0002" x="3" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0003" x="3" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0004" x="218" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0005" x="218" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0006" x="433" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0007" x="433" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0008" x="648" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0009" x="648" y="220" width="210" height="212"/>
+	<SubTexture name="manual icon hover0010" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0011" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0012" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0013" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0014" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0015" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0016" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0017" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0018" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0019" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0020" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0021" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0022" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0023" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0024" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0025" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0026" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0027" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0028" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0029" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0030" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0031" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0032" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0033" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0034" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0035" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0036" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0037" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0038" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0039" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0040" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0041" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0042" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0043" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0044" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0045" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0046" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0047" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0048" x="3" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0049" x="218" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0050" x="433" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0051" x="648" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0052" x="648" y="437" width="210" height="212"/>
+	<SubTexture name="manual icon hover0053" x="3" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0054" x="3" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0055" x="218" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0056" x="218" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0057" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0058" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0059" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0060" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0061" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0062" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0063" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0064" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0065" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0066" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0067" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0068" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0069" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0070" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0071" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0072" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0073" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0074" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0075" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0076" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0077" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0078" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0079" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0080" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0081" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0082" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0083" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0084" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0085" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0086" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0087" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0088" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0089" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0090" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0091" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0092" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0093" x="433" y="654" width="210" height="212"/>
+	<SubTexture name="manual icon hover0094" x="433" y="654" width="210" height="212"/>
+</TextureAtlas>
