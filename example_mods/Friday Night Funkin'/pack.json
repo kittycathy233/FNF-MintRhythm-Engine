@@ -1,0 +1,7 @@
+{
+	"name": "Friday Night Funkin'",
+	"description": "This is a port of Friday Night Funkin', do not remove it (the engine uses it).",
+	"restart":false,
+	"runsGlobally": false,
+	"color": [170, 0, 255]
+}

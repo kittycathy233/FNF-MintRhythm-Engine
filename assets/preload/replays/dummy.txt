@@ -1,0 +1,2 @@
+prevents null object reference
+so dont delete it

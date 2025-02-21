@@ -1,0 +1,5 @@
+{
+    "list": ["english", "spanish"],
+    "english": "english.json",
+    "spanish": "spanish.json"
+}
