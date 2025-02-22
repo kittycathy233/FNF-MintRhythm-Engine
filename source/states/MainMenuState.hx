@@ -11,6 +11,7 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.7.3'; // This is also used for Discord RPC
 	public static var extraKeysVersion:String = '0.4.9'; // This is also used for Discord RPC
+	public static var mintrhythmEngineVersion:String = '1.0.2'; // This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -88,6 +89,10 @@ class MainMenuState extends MusicBeatState
 			menuItem.screenCenter(X);
 		}
 
+		var mrVer:FlxText = new FlxText(12, FlxG.height - 84, 0, "MintRhythm Engine v" + mintrhythmEngineVersion, 12);
+		mrVer.scrollFactor.set();
+		mrVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(mrVer);
 		var ekVer:FlxText = new FlxText(12, FlxG.height - 64, 0, "Extra Keys v" + extraKeysVersion, 12);
 		ekVer.scrollFactor.set();
 		ekVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

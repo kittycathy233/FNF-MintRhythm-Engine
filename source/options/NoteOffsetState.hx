@@ -21,6 +21,11 @@ class NoteOffsetState extends MusicBeatState
 	var rating:FlxSprite;
 	var comboNums:FlxSpriteGroup;
 	var dumbTexts:FlxTypedGroup<FlxText>;
+	var theEXrating:FlxSprite;
+	public var scoreTxt:FlxText;
+	var scoreTxtTween:FlxTween;
+	public var health:Float = 1;
+	public var healthBar:Bar;
 
 	var barPercent:Float = 0;
 	var delayMin:Int = -500;
@@ -77,13 +82,45 @@ class NoteOffsetState extends MusicBeatState
 		coolText.screenCenter();
 		coolText.x = FlxG.width * 0.35;
 
-		rating = new FlxSprite().loadGraphic(Paths.image('sick'));
+		if(!ClientPrefs.data.rmperfect)
+			{
+				theEXrating = new FlxSprite().loadGraphic(Paths.image('perfect-extra'));
+				rating = new FlxSprite().loadGraphic(Paths.image('perfect'));
+			} else {
+				theEXrating = new FlxSprite().loadGraphic(Paths.image('sick-extra'));
+				rating = new FlxSprite().loadGraphic(Paths.image('sick'));
+			}
+
 		rating.cameras = [camHUD];
 		rating.antialiasing = ClientPrefs.data.antialiasing;
 		rating.setGraphicSize(Std.int(rating.width * 0.7));
 		rating.updateHitbox();
-		
+
 		add(rating);
+
+		theEXrating.cameras = [camHUD];
+		theEXrating.setGraphicSize(Std.int(theEXrating.width * 0.65));
+		theEXrating.updateHitbox();
+		theEXrating.antialiasing = ClientPrefs.data.antialiasing;
+
+		if(ClientPrefs.data.exratingDisplay){
+			add(theEXrating);
+		}
+		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'healthBar', function() return health, 0, 2);
+		healthBar.screenCenter(X);
+		healthBar.leftToRight = false;
+		healthBar.scrollFactor.set();
+		healthBar.visible = !ClientPrefs.data.hideHud;
+		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
+		add(healthBar);
+
+		scoreTxt = new FlxText(0, healthBar.y + 40, FlxG.width, "Score: 1145140 | Misses: 191 | Rating: Great (81%)", 20);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.scrollFactor.set();
+		scoreTxt.borderSize = 1.25;
+		scoreTxt.visible = !ClientPrefs.data.hideHud;
+		add(scoreTxt);
+
 
 		comboNums = new FlxSpriteGroup();
 		comboNums.cameras = [camHUD];
@@ -176,6 +213,7 @@ class NoteOffsetState extends MusicBeatState
 	var holdTime:Float = 0;
 	var onComboMenu:Bool = true;
 	var holdingObjectType:Null<Bool> = null;
+	var theEXratingDrag:Null<Bool> = null;
 
 	var startMousePos:FlxPoint = new FlxPoint();
 	var startComboOffset:FlxPoint = new FlxPoint();
@@ -300,35 +338,47 @@ class NoteOffsetState extends MusicBeatState
 
 			// probably there's a better way to do this but, oh well.
 			if (FlxG.mouse.justPressed || gamepadPressed)
-			{
-				holdingObjectType = null;
-				if(!controls.controllerMode)
-					FlxG.mouse.getScreenPosition(camHUD, startMousePos);
-				else
-					controllerPointer.getScreenPosition(startMousePos, camHUD);
-
-				if (startMousePos.x - comboNums.x >= 0 && startMousePos.x - comboNums.x <= comboNums.width &&
-					startMousePos.y - comboNums.y >= 0 && startMousePos.y - comboNums.y <= comboNums.height)
 				{
-					holdingObjectType = true;
-					startComboOffset.x = ClientPrefs.data.comboOffset[2];
-					startComboOffset.y = ClientPrefs.data.comboOffset[3];
-					//trace('yo bro');
+					holdingObjectType = null;
+					theEXratingDrag = null;
+	
+					if(!controls.controllerMode)
+						FlxG.mouse.getScreenPosition(camHUD, startMousePos);
+					else
+						controllerPointer.getScreenPosition(startMousePos, camHUD);
+	
+					if (startMousePos.x - comboNums.x >= 0 && startMousePos.x - comboNums.x <= comboNums.width &&
+						startMousePos.y - comboNums.y >= 0 && startMousePos.y - comboNums.y <= comboNums.height)
+					{
+						holdingObjectType = true;
+						startComboOffset.x = ClientPrefs.data.comboOffset[2];
+						startComboOffset.y = ClientPrefs.data.comboOffset[3];
+						//trace('yo bro');
+					}
+					else if (startMousePos.x - rating.x >= 0 && startMousePos.x - rating.x <= rating.width &&
+							 startMousePos.y - rating.y >= 0 && startMousePos.y - rating.y <= rating.height)
+					{
+						holdingObjectType = false;
+						startComboOffset.x = ClientPrefs.data.comboOffset[0];
+						startComboOffset.y = ClientPrefs.data.comboOffset[1];
+						//trace('heya');
+					}
+					else if (startMousePos.x - theEXrating.x >= 0 && startMousePos.x - theEXrating.x <= theEXrating.width &&
+							startMousePos.y - theEXrating.y >= 0 && startMousePos.y - theEXrating.y <= theEXrating.height)
+					{
+						theEXratingDrag = false;
+						startComboOffset.x = ClientPrefs.data.comboOffset[4];
+						startComboOffset.y = ClientPrefs.data.comboOffset[5];
+					}
+					
 				}
-				else if (startMousePos.x - rating.x >= 0 && startMousePos.x - rating.x <= rating.width &&
-						 startMousePos.y - rating.y >= 0 && startMousePos.y - rating.y <= rating.height)
-				{
-					holdingObjectType = false;
-					startComboOffset.x = ClientPrefs.data.comboOffset[0];
-					startComboOffset.y = ClientPrefs.data.comboOffset[1];
-					//trace('heya');
+	
+				if(FlxG.mouse.justReleased || gamepadReleased) {
+					holdingObjectType = null;
+					theEXratingDrag = null;
+					//trace('dead');
 				}
-			}
-			if(FlxG.mouse.justReleased || gamepadReleased) {
-				holdingObjectType = null;
-				//trace('dead');
-			}
-
+	
 			if(holdingObjectType != null)
 			{
 				if(FlxG.mouse.justMoved || analogMoved)
@@ -345,6 +395,19 @@ class NoteOffsetState extends MusicBeatState
 					repositionCombo();
 				}
 			}
+			if(theEXratingDrag != null)
+			{
+				if(FlxG.mouse.justMoved)
+				{
+					var mmousePos:FlxPoint = FlxG.mouse.getScreenPosition(camHUD);
+					var addNumm:Int = theEXratingDrag ? 0 : 0;
+
+					ClientPrefs.data.comboOffset[addNumm + 4] = Math.round((mmousePos.x - startMousePos.x) + startComboOffset.x);
+					ClientPrefs.data.comboOffset[addNumm + 5] = -Math.round((mmousePos.y - startMousePos.y) - startComboOffset.y);
+					repositionCombo();
+				}
+			}
+
 
 			if(controls.RESET)
 			{
@@ -458,6 +521,19 @@ class NoteOffsetState extends MusicBeatState
 					beatTween = null;
 				}
 			});
+
+			if(ClientPrefs.data.ratbounce == true) {
+				rating.scale.set(0.8, 0.8);
+				FlxTween.tween(rating.scale, {x: 0.7, y: 0.7}, 0.4, {ease: FlxEase.circOut,});
+			}
+
+			if(ClientPrefs.data.exratbounce == true) {
+				theEXrating.scale.set(0.85, 0.85);
+				theEXrating.angle = (Math.random() * 10 + 4) * (Math.random() > .5 ? 1 : -1);
+				FlxTween.tween(theEXrating, {angle: 0}, .6, {ease: FlxEase.quartOut});
+				FlxTween.tween(theEXrating.scale, {x: 0.7, y: 0.7}, 0.5, {ease: FlxEase.circOut});
+			}
+
 		}
 
 		lastBeatHit = curBeat;
@@ -466,18 +542,22 @@ class NoteOffsetState extends MusicBeatState
 	function repositionCombo()
 	{
 		rating.screenCenter();
-		rating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[0];
-		rating.y -= 60 + ClientPrefs.data.comboOffset[1];
+		rating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[0] - 130;
+		rating.y -= 60 + ClientPrefs.data.comboOffset[1] - 100;
 
 		comboNums.screenCenter();
 		comboNums.x = coolText.x - 90 + ClientPrefs.data.comboOffset[2];
-		comboNums.y += 80 - ClientPrefs.data.comboOffset[3];
+		comboNums.y += 80 - ClientPrefs.data.comboOffset[3] + 80;
+
+		theEXrating.screenCenter();
+		theEXrating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[4] + 130;
+		theEXrating.y += 0 - 60 - ClientPrefs.data.comboOffset[5] + 160;
 		reloadTexts();
 	}
 
 	function createTexts()
 	{
-		for (i in 0...4)
+		for (i in 0...6)
 		{
 			var text:FlxText = new FlxText(10, 48 + (i * 30), 0, '', 24);
 			text.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -503,6 +583,8 @@ class NoteOffsetState extends MusicBeatState
 				case 1: dumbTexts.members[i].text = '[' + ClientPrefs.data.comboOffset[0] + ', ' + ClientPrefs.data.comboOffset[1] + ']';
 				case 2: dumbTexts.members[i].text = 'Numbers Offset:';
 				case 3: dumbTexts.members[i].text = '[' + ClientPrefs.data.comboOffset[2] + ', ' + ClientPrefs.data.comboOffset[3] + ']';
+				case 4: dumbTexts.members[i].text = 'Extra Rating Offset:';
+				case 5: dumbTexts.members[i].text = '[' + ClientPrefs.data.comboOffset[4] + ', ' + ClientPrefs.data.comboOffset[5] + ']';
 			}
 		}
 	}

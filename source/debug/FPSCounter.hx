@@ -21,6 +21,8 @@ class FPSCounter extends TextField
 		The current memory usage (WARNING: this is NOT your total program memory usage, rather it shows the garbage collector memory)
 	**/
 	public var memoryMegas(get, never):Float;
+	public var memoryPeakMegas(get, never):Float;
+    private var memoryPeak:Float = 0;
 
 	@:noCompletion private var times:Array<Float>;
 
@@ -37,7 +39,7 @@ class FPSCounter extends TextField
 		defaultTextFormat = new TextFormat("_sans", 14, color);
 		autoSize = LEFT;
 		multiline = true;
-		text = "FPS: ";
+		text = "Loading... ";
 
 		times = [];
 	}
@@ -59,13 +61,17 @@ class FPSCounter extends TextField
 
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;		
 		updateText();
-		text += '\nEK v${MainMenuState.extraKeysVersion}';
+		if(ClientPrefs.data.exgameversion) text += '\nMintRain Engine Legacy v${MainMenuState.mintrhythmEngineVersion} \nExtra Keys v${MainMenuState.extraKeysVersion} \nPsych Engine v${MainMenuState.psychEngineVersion}';
 		deltaTimeout += deltaTime;
 	}
 
 	public dynamic function updateText():Void { // so people can override it in hscript
+		if (memoryMegas > memoryPeak) {
+            memoryPeak = memoryMegas;
+        }
+
 		text = 'FPS: ${currentFPS}'
-		+ '\nMemory: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}';
+		+ '\nMemory: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}'+' | ${flixel.util.FlxStringUtil.formatBytes(memoryPeak)}';
 
 		textColor = 0xFFFFFFFF;
 		if (currentFPS < FlxG.drawFramerate * 0.5)
@@ -74,4 +80,6 @@ class FPSCounter extends TextField
 
 	inline function get_memoryMegas():Float
 		return cast(System.totalMemory, UInt);
+	inline function get_memoryPeakMegas():Float
+        return memoryPeak;
 }

@@ -80,21 +80,57 @@ import tea.SScript;
 **/
 class PlayState extends MusicBeatState
 {
+	//杂七杂八的新特性
+	var notesHitArray:Array<Date> = [];
+	var nps:Int = 0;
+	var maxNPS:Int = 0;
+	var npsCheck:Int = 0;
+	var allNotesMs:Float = 0;
+	var averageMs:Float = 0;
+	var msTimeTxt:FlxText;
+	var msTimeTxtTween1:FlxTween;
+	var msTimeTxtTween2:FlxTween;
+	//var scoreTxtTweenAngle:FlxTween;
+	var dancingLeft:Bool = false;
+	var ratingexspr:String = '';
+	var exratingexspr:String = '-extra';
+	var ratingAlpha:Float = ClientPrefs.data.ratingsAlpha;
+
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
-	public static var ratingStuff:Array<Dynamic> = [
-		['You Suck!', 0.2], //From 0% to 19%
-		['Shit', 0.4], //From 20% to 39%
-		['Bad', 0.5], //From 40% to 49%
-		['Bruh', 0.6], //From 50% to 59%
-		['Meh', 0.69], //From 60% to 68%
-		['Nice', 0.7], //69%
-		['Good', 0.8], //From 70% to 79%
-		['Great', 0.9], //From 80% to 89%
-		['Sick!', 1], //From 90% to 99%
-		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
-	];
+	public var ratingStuff:Array<Dynamic> = ClientPrefs.data.scoretxtstyle == "Kade" ?
+    [
+		["D", 0.6], // accuracy < 60
+		["C", 0.7], // accuracy >= 60
+		["B", 0.80], // accuracy >= 70
+		["A", 0.85], // accuracy >= 80
+		["A.", 0.9], // accuracy >= 85
+		["A:", 0.93], // accuracy >= 90
+		["AA", 0.965], // accuracy >= 93
+		["AA.", 0.99], // accuracy >= 96.50
+		["AA:", 0.997], // accuracy >= 99
+		["AAA", 0.998], // accuracy >= 99.70
+		["AAA.", 0.999], // accuracy >= 99.80
+		["AAA:", 0.99955], // accuracy >= 99.90
+		["AAAA", 0.99970], // accuracy >= 99.955
+		["AAAA.", 0.99980], // accuracy >= 99.970
+		["AAAA:", 0.999935], // accuracy >= 99.980
+		["AAAAA", 1], // accuracy >= 99.9935
+		["AAAAA", 1], // accuracy >= 99.9935    
+		] :
+    [
+        ['You Suck!', 0.2], //From 0% to 19%
+        ['Shit', 0.4], //From 20% to 39%
+        ['Bad', 0.5], //From 40% to 49%
+        ['Bruh', 0.6], //From 50% to 59%
+        ['Meh', 0.69], //From 60% to 68%
+        ['Nice', 0.7], //69%
+        ['Good', 0.8], //From 70% to 79%
+        ['Great', 0.9], //From 80% to 89%
+        ['Sick!', 1], //From 90% to 99%
+        ['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
+    ];	
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -1146,6 +1182,7 @@ class PlayState extends MusicBeatState
 		var goods:Int = ratingsData[1].hits;
 		var bads:Int = ratingsData[2].hits;
 		var shits:Int = ratingsData[3].hits;
+        var perfects:Int = !ClientPrefs.data.rmperfect ? ratingsData[4].hits : 0;    
 
 		ratingFC = "";
 		if(songMisses == 0)
@@ -1153,6 +1190,7 @@ class PlayState extends MusicBeatState
 			if (bads > 0 || shits > 0) ratingFC = 'FC';
 			else if (goods > 0) ratingFC = 'GFC';
 			else if (sicks > 0) ratingFC = 'SFC';
+			else if (perfects > 0) ratingFC = 'PFC';
 		}
 		else {
 			if (songMisses < 10) ratingFC = 'SDCB';
@@ -2461,7 +2499,9 @@ class PlayState extends MusicBeatState
 
 		for (rating in ratingsData)
 			Paths.image(uiPrefix + rating.image + uiSuffix);
-		for (i in 0...10)
+		for (theEXrating in ratingsData)
+			Paths.image(uiPrefix + theEXrating.image + exratingexspr + uiSuffix);
+			for (i in 0...10)
 			Paths.image(uiPrefix + 'num' + i + uiSuffix);
 	}
 
@@ -2479,6 +2519,7 @@ class PlayState extends MusicBeatState
 
 		var placement:Float = FlxG.width * 0.35;
 		var rating:FlxSprite = new FlxSprite();
+		var theEXrating:FlxSprite = new FlxSprite();
 		var score:Int = 350;
 
 		//tryna do MS based judgment due to popular demand
@@ -2514,7 +2555,19 @@ class PlayState extends MusicBeatState
 			antialias = !isPixelStage;
 		}
 
-		rating.loadGraphic(Paths.image(uiPrefix + daRating.image + uiSuffix));
+		theEXrating.loadGraphic(Paths.image(uiPrefix + daRating.image + exratingexspr + uiSuffix));
+		theEXrating.screenCenter();
+		theEXrating.x = placement - 40;
+		theEXrating.y -= 60;
+		theEXrating.acceleration.y = 550 * playbackRate * playbackRate;
+		theEXrating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
+		theEXrating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
+		theEXrating.visible = (!ClientPrefs.data.hideHud && showRating);
+		theEXrating.x += ClientPrefs.data.comboOffset[4] + 130;
+		theEXrating.y -= ClientPrefs.data.comboOffset[5] - 200;
+		theEXrating.antialiasing = antialias;
+
+		rating.loadGraphic(Paths.image(uiPrefix + daRating.image + ratingexspr + uiSuffix));
 		rating.screenCenter();
 		rating.x = placement - 40;
 		rating.y -= 60;
@@ -2522,8 +2575,8 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		rating.visible = (!ClientPrefs.data.hideHud && showRating);
-		rating.x += ClientPrefs.data.comboOffset[0];
-		rating.y -= ClientPrefs.data.comboOffset[1];
+		rating.x += ClientPrefs.data.comboOffset[0] - 130;
+		rating.y -= ClientPrefs.data.comboOffset[1] - 120;
 		rating.antialiasing = antialias;
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'combo' + uiSuffix));
@@ -2537,21 +2590,47 @@ class PlayState extends MusicBeatState
 		comboSpr.antialiasing = antialias;
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
-		comboGroup.add(rating);
 
 		if (!PlayState.isPixelStage)
 		{
 			rating.setGraphicSize(Std.int(rating.width * 0.7));
+			theEXrating.setGraphicSize(Std.int(theEXrating.width * 0.7));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
 		}
 		else
 		{
 			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.85));
+			theEXrating.setGraphicSize(Std.int(theEXrating.width * daPixelZoom * 0.85));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
 		}
 
+		if(ClientPrefs.data.ratbounce == true && !PlayState.isPixelStage) 
+		{
+			rating.scale.set(0.9, 0.72);
+			FlxTween.tween(rating.scale, {x: 0.7, y: 0.7}, 0.4, {ease: FlxEase.circOut,});
+		}
+
+		if(ClientPrefs.data.exratbounce == true)
+		{
+			theEXrating.scale.set(0.85, 0.85);
+			theEXrating.angle = (Math.random() * 10 + 4) * (Math.random() > .5 ? 1 : -1);
+			FlxTween.tween(theEXrating, {angle: 0}, .6, {ease: FlxEase.quartOut});
+			FlxTween.tween(theEXrating.scale, {x: 0.7, y: 0.7}, 0.5, {ease: FlxEase.circOut});
+		}
+
+		if (ratingAlpha != 1)
+			{
+			rating.alpha = ratingAlpha;
+			theEXrating.alpha = ratingAlpha;
+			comboSpr.alpha = ratingAlpha;
+			}
+
+		if (ClientPrefs.data.exratingDisplay) comboGroup.add(theEXrating);
+		comboGroup.add(rating);
+
 		comboSpr.updateHitbox();
 		rating.updateHitbox();
+		theEXrating.updateHitbox();
 
 		var seperatedScore:Array<Int> = [];
 
@@ -2572,7 +2651,7 @@ class PlayState extends MusicBeatState
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'num' + Std.int(i) + uiSuffix));
 			numScore.screenCenter();
 			numScore.x = placement + (43 * daLoop) - 90 + ClientPrefs.data.comboOffset[2];
-			numScore.y += 80 - ClientPrefs.data.comboOffset[3];
+			numScore.y += 80 - ClientPrefs.data.comboOffset[3] + 80;
 
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
@@ -2603,12 +2682,16 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {
 			startDelay: Conductor.crochet * 0.001 / playbackRate
 		});
+		FlxTween.tween(theEXrating, {alpha: 0}, 0.2 / playbackRate, {
+			startDelay: Conductor.crochet * 0.00075 / playbackRate
+		});
 
 		FlxTween.tween(comboSpr, {alpha: 0}, 0.2 / playbackRate, {
 			onComplete: function(tween:FlxTween)
 			{
 				comboSpr.destroy();
 				rating.destroy();
+				theEXrating.destroy();
 			},
 			startDelay: Conductor.crochet * 0.002 / playbackRate
 		});
