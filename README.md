@@ -1,6 +1,20 @@
 # warning
 This branch is made specifically for the latest version of PE at the time (0.7.3)! The reason I'm not doing this in main is because when all the commits from experimental get merged into main its going to cause a lot of trouble as experimental will house EK PE 1.0 which will then be merged into main when it is released.
 
+to be updated
+
+# Friday Night Funkin' - MintRhythm Engine
+
+Based on Psych EK v0.4.9, this engine draws inspiration from [Funk Archive](https://gamebanana.com/mods/496238) and aims to provide [Blue Archive](https://en.wikipedia.org/wiki/Blue_Archive) players with a more user-friendly UI and the integration of features from other PE branches.
+
+## MintRhythm Credits:
+* KittyCathy - Programmer
+
+### Sprcial Thanks:
+* NovaFlare Engine:[New](https://github.com/beihu235/FNF-NovaFlare-Engine) / [Legacy](https://github.com/beihu235/NovaFlare-Engine-V1.0.1)
+* [Kimi](https://kimi.moonshot.cn/)
+* [DeepSeek](https://www.deepseek.com/)
+
 # Friday Night Funkin' - Psych Engine
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
@@ -10,13 +24,7 @@ Refer to [the Build Instructions](./BUILDING.md)
 
 ## Customization:
 
-if you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can read over to `Project.xml`
-
-inside `Project.xml`, you will find several variables to customize Psych Engine to your liking
-
-to start you off, disabling Videos should be simple, simply Delete the line `"VIDEOS_ALLOWED"` or comment it out by wrapping the line in XML-like comments, like this `<!-- YOUR_LINE_HERE -->`
-
-same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, this and other customization options are all available within the `Project.xml` file
+Like the [Psych Engine](https://github.com/ShadowMario/FNF-PsychEngine/), I won't elaborate on it here.
 
 ## Credits:
 * Shadow Mario - Programmer
