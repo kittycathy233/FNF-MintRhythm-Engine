@@ -61,7 +61,7 @@ class FPSCounter extends TextField
 
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;		
 		updateText();
-		if(ClientPrefs.data.exgameversion) text += '\nMintRain Engine Legacy v${MainMenuState.mintrhythmEngineVersion} \nExtra Keys v${MainMenuState.extraKeysVersion} \nPsych Engine v${MainMenuState.psychEngineVersion}';
+		if(ClientPrefs.data.exgameversion) text += '\nMintRhythm Engine v${MainMenuState.mintrhythmEngineVersion} \nExtra Keys v${MainMenuState.extraKeysVersion} \nPsych Engine v${MainMenuState.psychEngineVersion}';
 		deltaTimeout += deltaTime;
 	}
 

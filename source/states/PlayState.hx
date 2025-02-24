@@ -2563,8 +2563,8 @@ class PlayState extends MusicBeatState
 		theEXrating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		theEXrating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		theEXrating.visible = (!ClientPrefs.data.hideHud && showRating);
-		theEXrating.x += ClientPrefs.data.comboOffset[4] + 130;
-		theEXrating.y -= ClientPrefs.data.comboOffset[5] - 200;
+		theEXrating.x += ClientPrefs.data.comboOffset[4] - 220;
+		theEXrating.y += -ClientPrefs.data.comboOffset[5] + 150;
 		theEXrating.antialiasing = antialias;
 
 		rating.loadGraphic(Paths.image(uiPrefix + daRating.image + ratingexspr + uiSuffix));
@@ -2575,8 +2575,8 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		rating.visible = (!ClientPrefs.data.hideHud && showRating);
-		rating.x += ClientPrefs.data.comboOffset[0] - 130;
-		rating.y -= ClientPrefs.data.comboOffset[1] - 120;
+		rating.x += ClientPrefs.data.comboOffset[0] - 30;
+		rating.y -= ClientPrefs.data.comboOffset[1] - 130;
 		rating.antialiasing = antialias;
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'combo' + uiSuffix));
@@ -2585,10 +2585,10 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
 		comboSpr.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 		comboSpr.visible = (!ClientPrefs.data.hideHud && showCombo);
-		comboSpr.x += ClientPrefs.data.comboOffset[0];
+		comboSpr.x += ClientPrefs.data.comboOffset[0] + 60;
 		comboSpr.y -= ClientPrefs.data.comboOffset[1];
 		comboSpr.antialiasing = antialias;
-		comboSpr.y += 60;
+		comboSpr.y += 160;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
 		if (!PlayState.isPixelStage)
@@ -2650,8 +2650,8 @@ class PlayState extends MusicBeatState
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'num' + Std.int(i) + uiSuffix));
 			numScore.screenCenter();
-			numScore.x = placement + (43 * daLoop) - 90 + ClientPrefs.data.comboOffset[2];
-			numScore.y += 80 - ClientPrefs.data.comboOffset[3] + 80;
+			numScore.x = placement + (43 * daLoop) - 70 + ClientPrefs.data.comboOffset[2];
+			numScore.y += 80 - ClientPrefs.data.comboOffset[3] + 110;
 
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
@@ -3207,8 +3207,35 @@ class PlayState extends MusicBeatState
 		if (generatedMusic)
 			notes.sort(FlxSort.byY, ClientPrefs.data.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 
-		iconP1.scale.set(1.2, 1.2);
-		iconP2.scale.set(1.2, 1.2);
+		if (ClientPrefs.data.iconbopstyle != "NONE") 
+			{
+
+			iconP1.scale.set(1.2, 1.2);
+			iconP2.scale.set(1.2, 1.2);
+			}
+			else if (ClientPrefs.data.iconbopstyle == "Kade") {
+				iconP1.scale.set(1.4, 1.4);
+				iconP2.scale.set(1.4, 1.4);
+			}
+
+			dancingLeft = !dancingLeft;
+	
+			if (ClientPrefs.data.iconbopstyle == "OS") {
+				if (dancingLeft){
+					iconP1.angle = 8; iconP2.angle = 8; // maybe i should do it with tweens, but i'm lazy // i'll make it in -1.0.0, i promise
+				} else { 
+					iconP1.angle = -8; iconP2.angle = -8;
+				}
+			}
+			else if (ClientPrefs.data.iconbopstyle == "MintRhythm") {
+				if (curBeat%4 == 0) {
+					iconP1.angle = -25;
+					iconP2.angle = 25;
+	
+					FlxTween.tween(iconP1, {angle: 0}, 0.3, {ease: FlxEase.circOut});
+					FlxTween.tween(iconP2, {angle: 0}, 0.3, {ease: FlxEase.circOut});
+				}
+			}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();

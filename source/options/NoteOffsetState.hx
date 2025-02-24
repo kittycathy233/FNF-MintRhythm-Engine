@@ -542,7 +542,7 @@ class NoteOffsetState extends MusicBeatState
 	function repositionCombo()
 	{
 		rating.screenCenter();
-		rating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[0] - 130;
+		rating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[0] - 0;
 		rating.y -= 60 + ClientPrefs.data.comboOffset[1] - 100;
 
 		comboNums.screenCenter();
@@ -550,8 +550,8 @@ class NoteOffsetState extends MusicBeatState
 		comboNums.y += 80 - ClientPrefs.data.comboOffset[3] + 80;
 
 		theEXrating.screenCenter();
-		theEXrating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[4] + 130;
-		theEXrating.y += 0 - 60 - ClientPrefs.data.comboOffset[5] + 160;
+		theEXrating.x = coolText.x - 40 + ClientPrefs.data.comboOffset[4] - 170;
+		theEXrating.y += 0 - ClientPrefs.data.comboOffset[5] + 40;
 		reloadTexts();
 	}
 
@@ -599,6 +599,7 @@ class NoteOffsetState extends MusicBeatState
 	{
 		rating.visible = onComboMenu;
 		comboNums.visible = onComboMenu;
+		theEXrating.visible = onComboMenu;
 		dumbTexts.visible = onComboMenu;
 		
 		timeBar.visible = !onComboMenu;
